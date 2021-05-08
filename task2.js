@@ -36,21 +36,32 @@ const continueGame = () => {
   });
 };
 
-const handleGuess = () => {
-  enterNumber()
-    .then((result) => {
-      alert(`Dice: ${result.randNum}, you got ${result.point} points!`);
-      continueGame().then((result) => {
-        if (result) {
-          handleGuess();
-        } else {
-          alert("Game is done...Fuck off");
-        }
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+// const handleGuess = () => {
+//   enterNumber()
+//     .then((result) => {
+//       alert(`Dice: ${result.randNum}, you got ${result.point} points!`);
+//       continueGame().then((result) => {
+//         if (result) {
+//           handleGuess();
+//         } else {
+//           alert("Game is done...Fuck off");
+//         }
+//       });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// };
+
+const handleGuess = async () => {
+  const result = await enterNumber();
+  alert(`Dice: ${result.randNum}, you got ${result.point} points!`);
+  const isContinuing = await continueGame();
+  if (isContinuing) {
+    start();
+  } else {
+    alert("Game is done...Fuck off");
+  }
 };
 
 const start = () => {
