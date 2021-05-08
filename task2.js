@@ -54,13 +54,19 @@ const continueGame = () => {
 // };
 
 const handleGuess = async () => {
-  const result = await enterNumber();
-  alert(`Dice: ${result.randNum}, you got ${result.point} points!`);
-  const isContinuing = await continueGame();
-  if (isContinuing) {
-    start();
-  } else {
-    alert("Game is done...Fuck off");
+  try {
+    const result = await enterNumber();
+    alert(`Dice: ${result.randNum}, you got ${result.point} points!`);
+
+    const isContinuing = await continueGame();
+
+    if (isContinuing) {
+      start();
+    } else {
+      alert("Game is done...Fuck off");
+    }
+  } catch (error) {
+    alert(error);
   }
 };
 
