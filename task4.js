@@ -1,4 +1,4 @@
-// Task 4: get the neigher countries of Columbia
+// Task 4: get the neighbor countries of Columbia
 
 const fetchCountry = async (alpha3Code) => {
   try {
